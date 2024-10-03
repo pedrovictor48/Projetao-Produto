@@ -2,6 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../custom_widgets/return_button.dart';
 import '../games/games.dart';
+import 'story_button.dart';
+import '../custom_widgets/selected_frame.dart';
+
+// Model class for a Story
+class Story {
+  final Widget destination;
+  final String buttonText;
+  final List<String> svgPaths;
+
+  Story({
+    required this.destination,
+    required this.buttonText,
+    required this.svgPaths,
+  });
+}
 
 class Stories extends StatelessWidget {
   const Stories({super.key});
@@ -10,6 +25,64 @@ class Stories extends StatelessWidget {
   Widget build(BuildContext context) {
     const textSize = 28.0;
 
+    // List of stories to be displayed
+    final List<Story> stories = [
+      Story(
+        destination: Stories(), // Replace with your actual destination widget
+        buttonText: "Super Heróis",
+        svgPaths: [
+          'assets/imgs/apartment.svg',
+          'assets/imgs/electric_bolt.svg',
+          'assets/imgs/domino_mask.svg',
+        ],
+      ),
+      Story(
+        destination: Stories(),
+        buttonText: "Conto de Fadas",
+        svgPaths: [
+          'assets/imgs/castle.svg',
+          'assets/imgs/crown.svg',
+          'assets/imgs/star.svg',
+        ],
+      ),
+      Story(
+        destination: Stories(),
+        buttonText: "Aventura Espacial",
+        svgPaths: [
+          'assets/imgs/planet.svg',
+          'assets/imgs/rocket.svg',
+          'assets/imgs/alien.svg',
+        ],
+      ),
+      Story(
+        destination: Stories(),
+        buttonText: "Um dia na Floresta",
+        svgPaths: [
+          'assets/imgs/bird.svg',
+          'assets/imgs/trail.svg',
+          'assets/imgs/tree.svg',
+        ],
+      ),
+      Story(
+        destination: Stories(),
+        buttonText: "Aniversário",
+        svgPaths: [
+          'assets/imgs/balloon.svg',
+          'assets/imgs/cake.svg',
+          'assets/imgs/gift.svg',
+        ],
+      ),
+      Story(
+        destination: Stories(),
+        buttonText: "Piratas ao Mar",
+        svgPaths: [
+          'assets/imgs/ship.svg',
+          'assets/imgs/map.svg',
+          'assets/imgs/treasure.svg',
+        ],
+      ),
+    ];
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Stack(
@@ -17,383 +90,46 @@ class Stories extends StatelessWidget {
             Positioned.fill(
               child: SvgPicture.asset(
                 "assets/imgs/background.svg", // Update with your SVG path
-                fit: BoxFit.cover, // Same as the fit you used for PNG
+                fit: BoxFit.cover,
               ),
             ),
             Column(
               children: [
                 Row(children: [ReturnButton(parentContext: context)]),
-                Center(
+                const Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const Stories()),
-                              );
-                            },
-                            child: Container(
-                                decoration: BoxDecoration(
-                                  border:
-                                      Border.all(color: Colors.black, width: 3),
-                                  borderRadius: BorderRadius.circular(35),
-                                ),
-                                height: 160,
-                                width: 180,
-                                margin: const EdgeInsets.only(
-                                  left: marginVal,
-                                  right: marginVal,
-                                  bottom: marginVal,
-                                ),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    const Text(
-                                      "Heróis",
-                                      style: TextStyle(
-                                        fontSize: textSize,
-                                        fontFamily: 'Playpen-Sans',
-                                      ),
-                                      textAlign: TextAlign.justify,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        SvgPicture.asset(
-                                          'assets/imgs/apartment.svg',
-                                        ),
-                                        SvgPicture.asset(
-                                          'assets/imgs/electric_bolt.svg',
-                                        ),
-                                        SvgPicture.asset(
-                                          'assets/imgs/domino_mask.svg',
-                                        )
-                                      ],
-                                    )
-                                  ],
-                                )),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const Stories()),
-                              );
-                            },
-                            child: Container(
-                                decoration: BoxDecoration(
-                                  border:
-                                      Border.all(color: Colors.black, width: 3),
-                                  borderRadius: BorderRadius.circular(35),
-                                ),
-                                height: 160,
-                                width: 180,
-                                margin: const EdgeInsets.only(
-                                  left: marginVal,
-                                  right: marginVal,
-                                  bottom: marginVal,
-                                ),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    const Text(
-                                      "Fadas",
-                                      style: TextStyle(
-                                        fontSize: textSize,
-                                        fontFamily: 'Playpen-Sans',
-                                      ),
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        SvgPicture.asset(
-                                          'assets/imgs/castle.svg',
-                                          width: 30,
-                                          height: 30,
-                                        ),
-                                        SvgPicture.asset(
-                                          'assets/imgs/crown.svg',
-                                          width: 35,
-                                          height: 35,
-                                        ),
-                                        SvgPicture.asset(
-                                          'assets/imgs/star.svg',
-                                          width: 32,
-                                          height: 32,
-                                        )
-                                      ],
-                                    )
-                                  ],
-                                )),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const Stories()),
-                              );
-                            },
-                            child: Container(
-                                decoration: BoxDecoration(
-                                  border:
-                                      Border.all(color: Colors.black, width: 3),
-                                  borderRadius: BorderRadius.circular(35),
-                                ),
-                                height: 160,
-                                width: 180,
-                                margin: const EdgeInsets.only(
-                                  left: marginVal,
-                                  right: marginVal,
-                                  bottom: marginVal,
-                                ),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    const Text(
-                                      "Espaço",
-                                      style: TextStyle(
-                                        fontSize: textSize,
-                                        fontFamily: 'Playpen-Sans',
-                                      ),
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        SvgPicture.asset(
-                                          'assets/imgs/planet.svg',
-                                          height: 35,
-                                          width: 35,
-                                        ),
-                                        SvgPicture.asset(
-                                          'assets/imgs/rocket.svg',
-                                          height: 35,
-                                          width: 35,
-                                        ),
-                                        SvgPicture.asset(
-                                          'assets/imgs/alien.svg',
-                                          color: Colors.black,
-                                          height: 35,
-                                          width: 35,
-                                        )
-                                      ],
-                                    )
-                                  ],
-                                )),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const Stories()),
-                              );
-                            },
-                            child: Container(
-                                decoration: BoxDecoration(
-                                  border:
-                                      Border.all(color: Colors.black, width: 3),
-                                  borderRadius: BorderRadius.circular(35),
-                                ),
-                                height: 160,
-                                width: 180,
-                                margin: const EdgeInsets.only(
-                                  left: marginVal,
-                                  right: marginVal,
-                                  bottom: marginVal,
-                                ),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    const Text(
-                                      "Floresta",
-                                      style: TextStyle(
-                                        fontSize: textSize,
-                                        fontFamily: 'Playpen-Sans',
-                                      ),
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        SvgPicture.asset(
-                                          'assets/imgs/bird.svg',
-                                          height: 38,
-                                          width: 38,
-                                        ),
-                                        SvgPicture.asset(
-                                          'assets/imgs/trail.svg',
-                                          height: 35,
-                                          width: 35,
-                                        ),
-                                        SvgPicture.asset(
-                                          'assets/imgs/tree.svg',
-                                          height: 35,
-                                          width: 35,
-                                        )
-                                      ],
-                                    )
-                                  ],
-                                )),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const Stories()),
-                              );
-                            },
-                            child: Container(
-                                decoration: BoxDecoration(
-                                  border:
-                                      Border.all(color: Colors.black, width: 3),
-                                  borderRadius: BorderRadius.circular(35),
-                                ),
-                                height: 160,
-                                width: 180,
-                                margin: const EdgeInsets.only(
-                                  left: marginVal,
-                                  right: marginVal,
-                                  bottom: marginVal,
-                                ),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    const Text(
-                                      "Aniversário",
-                                      style: TextStyle(
-                                        fontSize: textSize,
-                                        fontFamily: 'Playpen-Sans',
-                                      ),
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        SvgPicture.asset(
-                                          'assets/imgs/balloon.svg',
-                                          height: 35,
-                                          width: 35,
-                                        ),
-                                        SvgPicture.asset(
-                                          'assets/imgs/cake.svg',
-                                          height: 35,
-                                          width: 35,
-                                        ),
-                                        SvgPicture.asset(
-                                          'assets/imgs/gift.svg',
-                                          height: 35,
-                                          width: 35,
-                                        )
-                                      ],
-                                    )
-                                  ],
-                                )),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const Stories()),
-                              );
-                            },
-                            child: Container(
-                                decoration: BoxDecoration(
-                                  border:
-                                      Border.all(color: Colors.black, width: 3),
-                                  borderRadius: BorderRadius.circular(35),
-                                ),
-                                height: 160,
-                                width: 180,
-                                margin: const EdgeInsets.only(
-                                  left: marginVal,
-                                  right: marginVal,
-                                  bottom: marginVal,
-                                ),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    const Text(
-                                      "Piratas",
-                                      style: TextStyle(
-                                        fontSize: textSize,
-                                        fontFamily: 'Playpen-Sans',
-                                      ),
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        SvgPicture.asset(
-                                          'assets/imgs/ship.svg',
-                                          height: 35,
-                                          width: 35,
-                                        ),
-                                        SvgPicture.asset(
-                                          'assets/imgs/map.svg',
-                                          height: 35,
-                                          width: 35,
-                                        ),
-                                        SvgPicture.asset(
-                                          'assets/imgs/treasure.svg',
-                                          height: 35,
-                                          width: 35,
-                                        )
-                                      ],
-                                    )
-                                  ],
-                                )),
-                          ),
-                        ],
-                      ),
-                    ],
+                    children: [],
                   ),
-                )
+                ),
+                ..._buildStoryButtons(stories), // Build the story buttons here
               ],
             ),
           ],
         ),
       ),
     );
+  }
+
+  // Function to build StoryButtons dynamically
+  List<Widget> _buildStoryButtons(List<Story> stories) {
+    List<Widget> rows = [];
+    for (int i = 0; i < stories.length; i += 2) {
+      List<Widget> rowButtons = [];
+      for (int j = 0; j < 2 && (i + j) < stories.length; j++) {
+        rowButtons.add(
+          StoryButton(
+            destination: stories[i + j].destination,
+            buttonText: stories[i + j].buttonText,
+            svgPaths: stories[i + j].svgPaths,
+          ),
+        );
+      }
+      rows.add(Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: rowButtons,
+      ));
+    }
+    return rows;
   }
 }
