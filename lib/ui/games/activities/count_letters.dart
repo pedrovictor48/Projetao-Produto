@@ -189,10 +189,19 @@ class _CountLettersState extends State<CountLetters> {
                               minWidth: 10,
                             ),
                             labelText: 'Número de Letras',
-                            errorText: isAnswerIncorrect ? 'Resposta Incorreta' : null, // Show error text
+                            helperText: isAnswerIncorrect ? 'Resposta Incorreta' : solvedActivity ? 'Resposta Certa!' : null,
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: isAnswerIncorrect ? Colors.red :
+                                solvedActivity ? Colors.green :
+                                Colors.grey, // Set to green if solved
+                              ),
+                            ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: isAnswerIncorrect ? Colors.red : Colors.blue, // Flash red when focused
+                                color: isAnswerIncorrect ? Colors.red :
+                                solvedActivity ? Colors.green :
+                                Colors.grey, // Flash red when focused
                               ),
                             ),
                           ),
